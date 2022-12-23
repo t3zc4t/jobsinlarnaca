@@ -1,0 +1,29 @@
+
+<!-- saved from url=(0105)https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/register.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="https://www.pythonanywhere.com/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus="" class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text" required="">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="email" name="email" placeholder="Email" type="email" required="">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" required="">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Password Confirmation" type="password" required="">
+        </div>
+        <div class="mb-3 text-center">
+            <button class="btn btn-primary btn-customcolor" type="submit">Register</button>
+        </div>
+
+    </form>
+{% endblock %}
+</body></html>

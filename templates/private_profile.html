@@ -1,0 +1,87 @@
+
+<!-- saved from url=(0112)https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/private_profile.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+<main class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h1>Profile Information</h1>
+            <form action="https://www.pythonanywhere.com/profile" method="post">
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label>Username: <input class="form-control" type="text" name="username" value="{{row[1]}}" disabled=""></label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label>Password: <input class="form-control" type="password" name="email" value="*********" disabled=""></label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label>Email: <input class="form-control" type="email" name="email" value="{{row[2]}}" disabled=""></label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label>Company Name: <input class="form-control" type="text" name="cname" value="{{row[3]}}"></label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label>Address: <input class="form-control" type="text" name="address" value="{{row[4]}}"></label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mb-3">
+                    <label>Website: <input class="form-control" type="text" name="websitelink" value="{{row[5]}}"></label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="mb-3">
+                    <button class="btn btn-primary btn-customcolor" type="submit">Update Profile</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-8">
+        <h2>Published Jobs</h2>
+        
+            {%for result in resultlist %}
+                
+                {%endfor%}
+            <table id="results" class="display">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Published</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody><tr>
+                     <td>
+                    {% if result.platform=="LinkedIn"%}
+                        <a href="https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/%7B%7Bresult.link%7D%7D" target="_blank">{{result.title}}</a>
+                    {% else %}
+                        <a href="https://www.pythonanywhere.com/job-listings/%7B%7Bresult.jobid%7D%7D">{{result.title}}</a>
+                    {% endif %}
+                </td>
+                    <td>{{result.dateposted}}</td>
+                    <td><a href="https://www.pythonanywhere.com/removejob/%7B%7Bresult.jobid%7D%7D">Remove</a></td>
+                </tr></tbody>
+        </table>
+    </div>
+</div>
+<script>
+$(document).ready( function () {
+    $('#results').DataTable();
+} );
+</script>
+</main>
+{% endblock %}
+</body></html>

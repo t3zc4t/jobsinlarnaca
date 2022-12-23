@@ -1,0 +1,50 @@
+
+<!-- saved from url=(0104)https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/getjobs.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "layout.html" %}
+
+{% block title %}
+    Job Listings
+{% endblock %}
+
+{% block main %}
+<h1 class="text-center">Jobs in Larnaca</h1>
+    
+            {%for result in resultlist %}
+            
+            {%endfor%}
+        <table id="results" class="display cell-border compact">
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Date</th>
+                <th>Platform</th>
+            </tr>
+        </thead>
+        <tbody><tr>
+                <td>
+                    {% if result.platform=="LinkedIn"%}
+                        <a href="https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/%7B%7Bresult.link%7D%7D" target="_blank">{{result.title}}</a>
+                    {% else %}
+                        <a href="https://www.pythonanywhere.com/job-listings/%7B%7Bresult.jobid%7D%7D">{{result.title}}</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if result.platform=="LinkedIn"%}
+                    {{result.companyname}}
+                    {% else %}
+                    {{result.cname}}
+                    {% endif %}
+                </td>
+                <td>{{result.dateposted}}</td>
+                <td>{{result.platform}}</td>
+            </tr></tbody>
+    </table>
+
+<script>
+$(document).ready( function () {
+    $('#results').DataTable();
+} );
+</script>
+{% endblock %}
+</body></html>

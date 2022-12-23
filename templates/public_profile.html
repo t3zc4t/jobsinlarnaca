@@ -1,0 +1,48 @@
+
+<!-- saved from url=(0111)https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/public_profile.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "layout.html" %}
+
+{% block title %}
+    Public Profile
+{% endblock %}
+
+{% block main %}
+<main class="container py-5 text-center">
+    <div class="jumbotron mb-5">
+        {%if row[3] %}
+        <h1>{{row[3]}}</h1>
+        {%endif%}
+        {%if row[4] %}
+        <p class="lead">{{row[4]}}</p>
+        {%endif%}
+        {%if row[5] %}
+        <p><a href="https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/%7B%7Brow[5]%7D%7D">{{row[5]}}</a></p>
+        {%endif%}
+    </div>
+    <div>
+        <h2>Published Jobs</h2>
+        
+                {%for result in resultlist %}
+                
+                {%endfor%}
+            <table id="results" class="display">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Published</th>
+                </tr>
+            </thead>
+            <tbody><tr>
+                    <td><a href="https://www.pythonanywhere.com/job-listings/%7B%7Bresult.jobid%7D%7D">{{result.title}}</a></td>
+                    <td>{{result.dateposted}}</td>
+                </tr></tbody>
+        </table>
+    </div>
+<script>
+$(document).ready( function () {
+    $('#results').DataTable();
+} );
+</script>
+</main>
+{% endblock %}
+</body></html>

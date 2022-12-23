@@ -1,0 +1,18 @@
+
+<!-- saved from url=(0100)https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/job.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "layout.html" %}
+
+{% block title %}
+    Job Listing
+{% endblock %}
+
+{% block main %}
+<main class="container py-5 text-center">
+    <h1>{{resultlist.title}}</h1>
+    <p>Posted on {{resultlist.platform}}, Date: {{resultlist.dateposted}}</p>
+    <p>Posted by <a href="https://www.pythonanywhere.com/companies/%7B%7Bcname%7D%7D">{{cname}}</a></p>
+    <br>
+    <p>{{resultlist.longdescription}}</p>
+</main>
+{% endblock %}
+</body></html>

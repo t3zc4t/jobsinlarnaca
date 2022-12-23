@@ -1,0 +1,32 @@
+
+<!-- saved from url=(0104)https://www.pythonanywhere.com/user/jobsinlarnaca/files/home/jobsinlarnaca/mysite/templates/postjob.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "layout.html" %}
+
+{% block title %}
+    Post Job
+{% endblock %}
+
+{% block main %}
+<main class="container py-5 text-center">
+
+ <h1>Post new Job</h1>
+    <form action="https://www.pythonanywhere.com/postjob" method="post">
+        <div class="form-row">
+            <div class="form-group mb-3">
+                <label>Title: <input class="form-control" type="text" name="title"></label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group mb-3">
+                <label>Description: <textarea class="form-control" name="description"></textarea></label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <button class="btn btn-primary btn-customcolor" type="submit">Post Job</button>
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}
+</body></html>
