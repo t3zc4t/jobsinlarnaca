@@ -5,6 +5,8 @@
 
 >Technologies used: Python, Flask, Jinja (templating), jQuery, Bootstrap, JavaScript, HTML, CSS, Beautiful Soup (Web Scraping for LinkedIn Jobs), MySQL
 
+Link to the app: https://jobsinlarnaca.pythonanywhere.com/
+
 ## Technologies used
 
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
