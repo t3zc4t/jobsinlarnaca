@@ -3,7 +3,7 @@
 ## CS50 Intro
 >This was my final project to conclude the CS50x course "Introduction to Computer Science", at the end of 2022.
 
->Technologies used: Python, Flask, Jinja (templating), jQuery, Bootstrap, JavaScript, HTML, CSS, Beautiful Soup (Webscraping for LinkedIn Jobs), MySQL
+>Technologies used: Python, Flask, Jinja (templating), jQuery, Bootstrap, JavaScript, HTML, CSS, Beautiful Soup (Web Scraping for LinkedIn Jobs), MySQL
 
 ## Technologies used
 
@@ -11,7 +11,7 @@
 - [Jinja template engine](https://jinja.palletsprojects.com/en/3.1.x/)
 - [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
 
-For hosting my project, I decided to go with the free version of python anywhere. Unfortunately the free version is restricted, for example you can't access the database from outside python anywhere, you can only connect to certain domains on a whitelist and I can't use a custom domain. But since it's free, it's totally fine, the only problem for me was, that I wrote some web scraping code for 2 additional local job listing platforms, but since these are not included in the whitelist, I had to stick with LinkedIn only as an external source.
+For hosting my project, I decided to go with the free version of python anywhere. Unfortunately the free version is restricted, for example you can't access the database from outside python anywhere, you can only connect to certain domains on a whitelist and I can't use a custom domain. But since it's free, it's totally fine. The only problem for me was that I wrote some web scraping code for 2 additional local job listing platforms, but since these are not included in the whitelist, I had to stick with LinkedIn only as an external source.
 
 [Python Anywhere](https://www.pythonanywhere.com/)
 
@@ -19,7 +19,7 @@ For my backend I chose Flask (Python) as a web framework, for the database I've 
 
 
 ## Explaining the project and the database
-My final project is a webapp, where you can find job offers in Larnaca, Cyprus. Anyone can see job listings, whereas registered users can also publish and remove their own listings. A scheduled worker script is running 1/day and is also checking any new job listings on LinkedIn for Cyprus and updates the database accordingly if new listings are found. The database has been filled at the beginning with all jobs from LinkedIn, and now everyday the worker script is updating the database.
+My final project is a web app, where you can find job offers in Larnaca, Cyprus. Anyone can see job listings, whereas registered users can also publish and remove their own listings. A scheduled worker script is running 1/day and is also checking any new job listings on LinkedIn for Cyprus and updates the database accordingly if new listings are found. The database has been filled at the beginning with all jobs from LinkedIn, and now everyday the worker script is updating the database.
 
 The project consists of 4 parts: Frontend, Backend, Database, Cronjob script
 
@@ -46,15 +46,15 @@ With the Jinja templating engine, other pages are derived from this layout file.
 
 - apology.html: Error page, in case something goes wrong, this file will be sent to the visitor
 - getjobs.html: Using [datatables.js](https://datatables.net/), all Jobs from the database are listed here which is also the default route /. 
-- job.html: For jobs published on the webapp (through a user profile), all details are listed here for each job
+- job.html: For jobs published on the web app (through a user profile), all details are listed here for each job
 - layout.html: This is the main layout file, from which all other files are derived
-- login.html: A login page which checks if the user and password exists in the database. Passwords are hashed and enrcypted.
-- postjob.html: After logged in, users can publish a new job. For now only a title and job description is implemented, additionally the user id together with the current date will be added to the database.
+- login.html: A login page which checks if the user and password exists in the database. Passwords are hashed and encrypted.
+- postjob.html: After logging in, users can publish a new job. For now only a title and job description is implemented, additionally the user id together with the current date will be added to the database.
 - private_profile.html: A profile page, where the user can see their own posted jobs, remove them and update the user profile.
 - public_profile.html: A public profile, where user/company information will be shown.
 - register.html: Register page, where a user can register a new account. On the backend, the data will be validated.
 
-A scraped job is linked to the LinkedIn Job description page, a job posted on the webapp itself is linked to the job.html page.
+A scraped job is linked to the LinkedIn Job description page, a job posted on the web app itself is linked to the job.html page.
 
 ## MySQL with the Python MySQL Connector
 
@@ -94,11 +94,11 @@ PRIMARY KEY (jobid),
 FOREIGN KEY (userid) REFERENCES users(userid)
 );
 ```
-For both tables, there are more columns than used, as I'm still planning to extend this project in the future where I need additional information. The jobs table uses 1 Foreign key (userid) to link a job to a specific user. Since many jobs are coming from LinkedIn where the respective user profile doesn't exist though on the webapp, I had to use some workaround. For scraped jobs, the companyname will be added to the companyname field of the jobs table and all associated to the user with the userid 1 (admin). Jobs posted on the webapp itself will have an empty companyname in the jobs table, and using the userid+companyname from the user table. This is a bit messy, but will improve this in the future.
+For both tables, there are more columns than used, as I'm still planning to extend this project in the future where I need additional information. The jobs table uses 1 Foreign key (userid) to link a job to a specific user. Since many jobs are coming from LinkedIn where the respective user profile doesn't exist though on the web app, I had to use some workaround. For scraped jobs, the company name will be added to the companyname field of the jobs table and all associated to the user with the userid 1 (admin). Jobs posted on the web app itself will have an empty companyname in the jobs table, and use the userid+companyname from the user table. This is a bit messy, but will improve this in the future.
 
 
 ### Cronjob Script
-I have a cronjob running 1/day which scrapes LinkedIn Jobs in Larnaca and keep updating the jobs table in the database.
+I have a cronjob running 1/day which scrapes LinkedIn Jobs in Larnaca and keeps updating the jobs table in the database.
 
 
 There are 3 main parts in this script:
@@ -180,3 +180,4 @@ Thank you for everything, CS50, especially @dmalan, @dlloyd09, and @brianyu28!
 
 If you want to connect with me, please add me on LinkedIn: 
 [Christian Schuster on LinkedIn](https://www.linkedin.com/in/t3zc4t/)
+
